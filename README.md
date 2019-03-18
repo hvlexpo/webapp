@@ -10,12 +10,12 @@
 
 <p align="center">
   <a href="https://travis-ci.com/hvlexpo/hvlexpo/">
-    <img src="https://travis-ci.com/hvlexpo/hvlexpo/webapp.svg?branch=master"
+    <img src="https://travis-ci.com/hvlexpo/hvlexpo.svg?branch=master"
          alt="Travis CI">
   </a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/github/license/Naereen/StrapDown.js.svg"></a>
   
-  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/hvlexpo/hvlexpo.svg">
+  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/hvlexpo/webapp.svg">
   
   <a href="https://www.hvl.no">
     <img src="https://img.shields.io/badge/hvl-dat109-blue.svg">
