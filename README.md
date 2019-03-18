@@ -1,68 +1,79 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">
+  <br>
+  <a href="http://www.hvl.no"><img src="http://drive.google.com/uc?export=view&id=1arruHIXA2AeDNhefnsU61Mk_dQiiq7NB" alt="Markdownify" width="150"></a>
+  <br>
+  HVL EXPO
+  <br>
+</h1>
 
-## Available Scripts
+<h4 align="center">The HVL Expo experience built on <a href="https://flutter.io" target="_blank">Flutter</a>, <a href="https://reactjs.org/" target="_blank">React</a> and <a href="https://firebase.google.com/" target="_blank">Firebase</a>.</h4>
 
-In the project directory, you can run:
+<p align="center">
+  <a href="https://travis-ci.com/hvlexpo/hvlexpo/">
+    <img src="https://travis-ci.com/hvlexpo/hvlexpo.svg?branch=master"
+         alt="Travis CI">
+  </a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/github/license/Naereen/StrapDown.js.svg"></a>
+  
+  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/hvlexpo/hvlexpo.svg">
+  
+  <a href="https://www.hvl.no">
+    <img src="https://img.shields.io/badge/hvl-dat109-blue.svg">
+  </a>
+</p>
 
-### `npm start`
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#how-to-use">How To Use</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#credits">Credits</a> •
+  <a href="#license">License</a>
+</p>
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Key Features
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+* List of key features
 
-### `npm test`
+## How To Use
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Information on how to use both the web and mobile clients.
 
-### `npm run build`
+## Development
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The development of each part of the software will happen on it's own branch. After significant progress, a pull request can be made to merge it into master. In general you shouldn't commit directly to master. You should also consider branching out from each respective branch if you are going to work on a specific feature or issue, and then make a pull request back to the original branch.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+For pull requests to be merged into master they must be reviewed and pass all the tests.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Flutter development will be on the branch `mobile-development`.
 
-### `npm run eject`
+Backend development will be on the branch `backend-development`.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Frontend development will be on the branch `frontend-development`.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Information on how to download and install/run web and mobile clients.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Progress
 
-## Learn More
+| Week          | To-do                               | Done  |
+| ------------- | ----------------------------------- | :---: |
+| 9             | Initial planning, product planning  | ✅    |
+| 10            | First iteration; vision             | 🔄    |
+| 11            | Second iteration; architecture      | 🔜    |
+| 12            | Third iteration; implementation     | 🔜    |
+| 13            | Fourth iteration; implementation    | 🔜    |
+| 14            | Presentation and summary            | 🔜    |
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Credits
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This software uses the following open source packages:
 
-### Code Splitting
+- [Flutter](https://flutter.io)
+- More packages
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## License
 
-### Analyzing the Bundle Size
+MIT
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+---
