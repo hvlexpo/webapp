@@ -62,7 +62,6 @@ export default class Login extends Component {
 					<Header as='h1' icon textAlign='center'>
 						<Icon name='eye' color='blue' />
 						Login for extended view
-						<Text />
 					</Header>
 					<Form onSubmit={this.handleSubmit} size='large'>
 						<Segment stacked>
