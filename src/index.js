@@ -6,19 +6,22 @@ import App from "./App";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 
-import * as serviceWorker from "./serviceWorker";
 
-const Root = () => (
-	<Router>
-		<React.Fragment>
-			<Navbar />
-			<Switch>
-				<Route exact path='/' component={App} />
-				<Route path='/login' component={Login} />
-			</Switch>
-		</React.Fragment>
-	</Router>
-);
+const Root = () => {
+	const apiHost = 'api.expo.sondregjellestad.space'
+
+	return (
+		<Router>
+			<React.Fragment>
+				<Navbar />
+				<Switch>
+					<Route exact path='/' component={App} />
+					<Route path='/login' component={Login} />
+				</Switch>
+			</React.Fragment>
+		</Router>
+	)
+}
 
 ReactDOM.render(<Root />, document.getElementById("root"));
-serviceWorker.unregister();
+
