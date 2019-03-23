@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "firebase": "^5.9.0",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
-    "react-router-dom": "^4.4.0",
+    "firebase": "^5.9.1",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.86.0"
@@ -15,8 +15,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-	"eject": "react-scripts eject",
-	"build:backend": "react-scripts build && mv build ../backend/"
+    "eject": "react-scripts eject",
+    "now-build": "react-scripts build",
+    "build:backend": "react-scripts build && mv build ../backend/"
   },
   "eslintConfig": {
     "extends": "react-app"
