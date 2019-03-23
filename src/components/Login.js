@@ -12,11 +12,18 @@ import {
 
 export default class Login extends Component {
 	state = {
-		email: "",
-		password: "",
+		phoneNumber: '',
 		errors: [],
 		loading: false
 	};
+
+	componentDidMount() {
+		window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier("recaptcha-container",
+			{
+				size: "invisible"
+				// other options
+			});
+	}
 
 	displayErrors = errors =>
 		errors.map((error, i) => <p key={i}>{error.message}</p>);
@@ -29,11 +36,17 @@ export default class Login extends Component {
 		event.preventDefault();
 		if (this.isFormValid(this.state)) {
 			this.setState({ errors: [], loading: true });
+
+			const appVerifier = window.recaptchaVerifier;
+
 			firebase
 				.auth()
-				.signInWithEmailAndPassword(this.state.email, this.state.password)
-				.then(signedInUser => {
-					console.log(signedInUser);
+				.signInWithPhoneNumber(this.state.phoneNumber, appVerifier)
+				.then(confirmResult => {
+					console.log(confirmResult);
+					
+					// TODO Input for verification code
+					confirmResult.confirm()
 				})
 				.catch(err => {
 					console.error(err);
@@ -45,7 +58,7 @@ export default class Login extends Component {
 		}
 	};
 
-	isFormValid = ({ email, password }) => email && password;
+	isFormValid = ({ phoneNumber }) => phoneNumber;
 
 	handleInputError = (errors, inputName) => {
 		return errors.some(error => error.message.toLowerCase().includes(inputName))
@@ -54,7 +67,7 @@ export default class Login extends Component {
 	};
 
 	render() {
-		const { email, password, errors, loading } = this.state;
+		const { phoneNumber, errors, loading } = this.state;
 
 		return (
 			<Grid textAlign='center' verticalAlign='middle' className='app'>
@@ -67,23 +80,13 @@ export default class Login extends Component {
 						<Segment stacked>
 							<Form.Input
 								fluid
-								name='email'
+								name='phoneNumber'
 								iconPosition='left'
-								placeholder='Email Address'
+								placeholder='Phone Number'
 								onChange={this.handleChange}
-								value={email}
+								value={phoneNumber}
 								className={this.handleInputError(errors, "email")}
-								type='email'
-							/>
-							<Form.Input
-								fluid
-								name='password'
-								iconPosition='left'
-								placeholder='Password'
-								onChange={this.handleChange}
-								value={password}
-								className={this.handleInputError(errors, "password")}
-								type='password'
+								type='text'
 							/>
 							<Button
 								disabled={loading}
@@ -102,6 +105,7 @@ export default class Login extends Component {
 							{this.displayErrors(errors)}
 						</Message>
 					)}
+					<div id="recaptcha-container"></div>
 				</Grid.Column>
 			</Grid>
 		);
