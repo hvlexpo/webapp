@@ -1,0 +1,51 @@
+.header {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: #176c89;
+	padding: 8px 16px;
+	z-index: 1;
+}
+
+.header__link {
+	text-decoration: none;
+	color: #00aeba;
+	font-weight: bold;
+	padding: 3px;
+}
+
+.header > div {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.nav {
+	display: inline-block;
+	text-align: left;
+	width: calc(100% - 74px);
+	vertical-align: middle;
+}
+
+.nav__items {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.nav__item {
+	display: inline-block;
+	margin: 0 16px;
+}
+
+.nav__link {
+	text-decoration: none;
+	color: #da532c;
+	font-weight: bold;
+	padding: 3px;
+}
+
+.nav__link:hover,
+.nav__link:active {
+	color: white;
+}
