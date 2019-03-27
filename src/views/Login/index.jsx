@@ -4,7 +4,13 @@ import "./Login.css"
 
 class Login extends Component {
 	state = {
-		phoneNumber: ""
+		phoneNumber: "",
+		verificationCode: "",
+		codeInput: false,
+		confirmResult: null,
+		errors: [],
+		loading: false,
+		loggedInUser: null
 	}
 
 	componentDidMount() {
@@ -25,21 +31,44 @@ class Login extends Component {
 	}
 
 	handleSubmit = event => {
+		console.log("handleSubmit")
 		event.preventDefault()
 		if (this.isFormValid(this.state)) {
+			this.setState({ errors: [], loading: true })
+
 			firebase
 				.auth()
 				.signInWithPhoneNumber(this.state.phoneNumber, window.recaptchaVerifier)
 				.then(confirmResult => {
 					console.log(confirmResult)
-
-					// TODO Input for verification code
-					confirmResult.confirm()
+					this.setState({ confirmResult })
 				})
 				.catch(err => {
 					console.error(err)
+					this.setState({
+						errors: this.state.errors.concat(err),
+						loading: false
+					})
 				})
+
+			this.setState({ phoneNumber: "", codeInput: true })
 		}
+	}
+
+	handleVerificationCode = event => {
+		event.preventDefault()
+		this.state.confirmResult
+			.confirm(this.state.verificationCode)
+			.then(user => this.setState({ loggedInUser: user }))
+			.catch(err => {
+				return ""
+			})
+
+		this.setState({
+			verificationCode: "",
+			codeInput: false,
+			confirmResult: null
+		})
 	}
 
 	isFormValid = ({ phoneNumber }) => phoneNumber
@@ -51,20 +80,44 @@ class Login extends Component {
 	}
 
 	render() {
-		const { phoneNumber } = this.state
+		const { phoneNumber, codeInput, verificationCode } = this.state
 
 		return (
-			<div className='form__wrapper'>
-				<form className='form__login' onSubmit={this.handleSubmit}>
-					<span>Your phonenumber:</span>
-					<input
-						placeholder='Phonenumber'
-						className='form__input'
-						onChange={this.handleChange}
-						value={phoneNumber}
-					/>
-					<button className='form__button'>Login</button>
-				</form>
+			<div className='Login'>
+				<div className='form__wrapper'>
+					{!codeInput ? (
+						<div>
+							<form className='form__login' onSubmit={this.handleSubmit}>
+								<span>Your phonenumber:</span>
+								<input
+									placeholder='Phonenumber'
+									className='form__input'
+									name='phoneNumber'
+									onChange={this.handleChange}
+									value={phoneNumber}
+								/>{" "}
+								<button className='form__button'>Login</button>
+							</form>
+						</div>
+					) : (
+						<div>
+							<form
+								className='form__login'
+								onSubmit={this.handleVerificationCode}
+							>
+								<span>Your recived code:</span>
+								<input
+									placeholder='Enter digits'
+									className='form__input'
+									name='verificationCode'
+									onChange={this.handleChange}
+									value={verificationCode}
+								/>
+								<button className='form__button'>Submit</button>
+							</form>
+						</div>
+					)}
+				</div>
 			</div>
 		)
 	}

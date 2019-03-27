@@ -14,23 +14,13 @@ class Navbar extends Component {
 				<nav className='nav'>
 					<ul className='nav__items'>
 						<li className='nav__item'>
-							<Link to='/' className='nav__link'>
-								Home
+							<Link to='/login' className='nav__link'>
+								Login
 							</Link>
 						</li>
 						<li className='nav__item'>
 							<Link to='/about' className='nav__link'>
 								About
-							</Link>
-						</li>
-						<li className='nav__item'>
-							<Link to='/popular' className='nav__link'>
-								Popular
-							</Link>
-						</li>
-						<li className='nav__item'>
-							<Link to='/login' className='nav__link'>
-								Login
 							</Link>
 						</li>
 					</ul>
