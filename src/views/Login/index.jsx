@@ -16,10 +16,7 @@ class Login extends Component {
 	componentDidMount() {
 		window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
 			"recaptcha-container",
-			{
-				size: "invisible"
-				// other options
-			}
+			{ size: "invisible" }
 		)
 	}
 

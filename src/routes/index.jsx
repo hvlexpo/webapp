@@ -1,21 +1,30 @@
 import React from "react"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
+// Components
 import Navbar from "../components/Navbar"
+
+// Views
+import ProtectedRoute from "../auth/ProtectedRoute"
 import App from "../views/App"
 import Login from "../views/Login"
 
-function Routes() {
+// Contexts
+const UserContext = React.createContext({ user: null })
+
+const Routes = props => {
 	return (
-		<Router>
-			<React.Fragment>
-				<Navbar />
-				<Switch>
-					<Route exact path='/' component={App} />
-					<Route exact path='/login' component={Login} />
-				</Switch>
-			</React.Fragment>
-		</Router>
+		<UserContext.Provider>
+			<Router>
+				<React.Fragment>
+					<Navbar />
+					<Switch>
+						<ProtectedRoute path='/dashboard' component={App} />
+						<Route exact path='/' component={Login} />
+					</Switch>
+				</React.Fragment>
+			</Router>
+		</UserContext.Provider>
 	)
 }
 
