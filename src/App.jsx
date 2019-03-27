@@ -6,13 +6,12 @@ import Navbar from "../components/Navbar"
 
 // Views
 import ProtectedRoute from "../auth/ProtectedRoute"
-import App from "../views/App"
 import Login from "../views/Login"
 
 // Contexts
-const UserContext = React.createContext({ user: null })
+import { UserContext } from "./contexts/AuthContext"
 
-const Routes = props => {
+const App = props => {
 	return (
 		<UserContext.Provider>
 			<Router>
@@ -28,4 +27,4 @@ const Routes = props => {
 	)
 }
 
-export default Routes
+export default App

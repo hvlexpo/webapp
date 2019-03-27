@@ -1,6 +1,17 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import Routes from "./routes"
+
+import App from "./App"
+
 import "./index.css"
 
-ReactDOM.render(<Routes />, document.getElementById("root"))
+import { AuthProvider, AuthContext } from "./contexts/AuthContext"
+
+ReactDOM.render(
+	<AuthProvider>
+		<AuthContext.Consumer>
+			{({ isAuth, user }) => <App isAuth={isAuth} user={user} />}
+		</AuthContext.Consumer>
+	</AuthProvider>,
+	document.getElementById("root")
+)

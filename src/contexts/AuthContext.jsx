@@ -1,12 +1,19 @@
 import React, { Component } from "react"
+import firebase from "../database/firebase"
 
 const AuthContext = React.createContext()
 
 class AuthProvider extends Component {
-	state = { isAuth: false }
+	state = { isAuth: false, user: null }
+
+	constructor() {
+		super()
+		this.login = this.login.bind(this)
+		this.logout = this.logout.bind(this)
+	}
 
 	login() {
-		setTimeout(() => this.setState({ isAuth: true }), 1000)
+		setTimeout(() => this.setState({ isAuth: true }))
 	}
 
 	logout() {
