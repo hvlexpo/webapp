@@ -1,0 +1,38 @@
+.Dashboard {
+	margin: 0;
+}
+
+.Dashboard h1 {
+	padding: 0;
+	margin: 0;
+}
+
+.dashboard__header {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	background: darkgray;
+	height: 25vh;
+	padding: 20px;
+	color: white;
+}
+
+.dashboard__brand {
+}
+
+.dashboard__header img {
+	width: 200px;
+}
+
+.dashboard__title {
+	font-size: 30px;
+}
+
+.dashboard__content {
+	background: white;
+	height: 50vh;
+	padding: 20px;
+}

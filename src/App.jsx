@@ -11,6 +11,8 @@ import Navbar from "./components/Navbar"
 
 // Views
 import Login from "./views/Login"
+import Dashboard from "./views/Dashboard"
+import About from "./views/About"
 
 // Contexts
 import { Consumer } from "./contexts/AuthContext"
@@ -37,8 +39,11 @@ const App = props => {
 						<React.Fragment>
 							<Navbar />
 							<Switch>
-								<ProtectedRoute path='/dashboard' component={App} />
+								{/* Protected route is disabled while in development */}
+								{/* <ProtectedRoute path='/dashboard' component={Dashboard} /> */}
+								<Route exact path='/dashboard' component={Dashboard} />
 								<Route exact path='/' component={Login} />
+								<Route exact path='/about' component={About} />
 							</Switch>
 						</React.Fragment>
 					</Router>

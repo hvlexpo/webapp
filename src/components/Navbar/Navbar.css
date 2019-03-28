@@ -1,19 +1,21 @@
 .header {
 	display: flex;
 	flex-wrap: wrap;
-	flex-direction: column;
-	align-content: center;
+	flex-direction: row;
 	align-items: center;
-	justify-content: center;
-	background: #176c89;
+	justify-content: flex-start;
+	background: #004357;
+	font-family: "Akademie", sans-serif;
+	height: 6vh;
 	padding: 8px 16px;
 }
 
 .header__link {
 	text-decoration: none;
 	display: inline-block;
-	color: white;
+	color: #4badbd;
 	font-weight: bold;
+	margin-right: 50px;
 }
 
 .header > div {
@@ -35,7 +37,8 @@
 
 .nav__link {
 	text-decoration: none;
-	color: #da532c;
+	color: #4badbd;
+	font-size: 1.2rem;
 	font-weight: bold;
 	padding: 3px;
 }
@@ -43,4 +46,5 @@
 .nav__link:hover,
 .nav__link:active {
 	color: white;
+	border-bottom: 1px solid #f8dc53;
 }
