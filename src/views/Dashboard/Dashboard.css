@@ -1,20 +1,13 @@
 .Dashboard {
-	margin: 0;
-}
-
-.Dashboard h1 {
-	padding: 0;
-	margin: 0;
 }
 
 .dashboard__header {
 	display: flex;
-	flex-wrap: wrap;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: center;
 	align-content: center;
 	align-items: center;
-	background: darkgray;
+	background: #4badbd;
 	height: 25vh;
 	padding: 20px;
 	color: white;
@@ -28,7 +21,9 @@
 }
 
 .dashboard__title {
-	font-size: 30px;
+	font-size: 3rem;
+	font-family: "Akademie-Bold", sans-serif;
+	color: #004357;
 }
 
 .dashboard__content {

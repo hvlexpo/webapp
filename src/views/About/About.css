@@ -1,0 +1,38 @@
+.About {
+}
+
+.about__intro {
+	padding: 20px;
+}
+
+.about__title {
+	font-size: 3rem;
+	font-family: "Akademie-Bold", sans-serif;
+	color: #004357;
+}
+
+.about__mapWrapper {
+	margin-top: 50px;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	align-content: center;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.about__team {
+	margin-left: 50px;
+}
+
+.team__title {
+	font-size: 2rem;
+	font-family: "Akademie-Bold", sans-serif;
+	color: #da532c;
+}
+
+.team__text {
+	font-size: 1.2rem;
+	font-family: "Akademie-Light", sans-serif;
+	color: #004357;
+}
