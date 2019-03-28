@@ -1,29 +1,50 @@
 import React from "react"
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Redirect
+} from "react-router-dom"
 
 // Components
-import Navbar from "../components/Navbar"
+import Navbar from "./components/Navbar"
 
 // Views
-import ProtectedRoute from "../auth/ProtectedRoute"
-import Login from "../views/Login"
+import Login from "./views/Login"
 
 // Contexts
-import { UserContext } from "./contexts/AuthContext"
+import { Consumer } from "./contexts/AuthContext"
+
+const ProtectedRoute = ({ component: Component, ...rest }) => (
+	<Consumer>
+		{({ isAuth }) => (
+			<Route
+				render={props =>
+					isAuth ? <Component {...props} /> : <Redirect to='/' />
+				}
+				{...rest}
+			/>
+		)}
+	</Consumer>
+)
 
 const App = props => {
 	return (
-		<UserContext.Provider>
-			<Router>
-				<React.Fragment>
-					<Navbar />
-					<Switch>
-						<ProtectedRoute path='/dashboard' component={App} />
-						<Route exact path='/' component={Login} />
-					</Switch>
-				</React.Fragment>
-			</Router>
-		</UserContext.Provider>
+		<Consumer>
+			{value => {
+				return (
+					<Router>
+						<React.Fragment>
+							<Navbar />
+							<Switch>
+								<ProtectedRoute path='/dashboard' component={App} />
+								<Route exact path='/' component={Login} />
+							</Switch>
+						</React.Fragment>
+					</Router>
+				)
+			}}
+		</Consumer>
 	)
 }
 

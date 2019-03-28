@@ -3,7 +3,7 @@ import firebase from "../database/firebase"
 
 const AuthContext = React.createContext()
 
-class AuthProvider extends Component {
+export class Provider extends Component {
 	state = { isAuth: false, user: null }
 
 	constructor() {
@@ -35,6 +35,4 @@ class AuthProvider extends Component {
 	}
 }
 
-const AuthConsumer = AuthContext.Consumer
-
-export { AuthProvider, AuthConsumer }
+export const Consumer = AuthContext.Consumer

@@ -5,13 +5,11 @@ import App from "./App"
 
 import "./index.css"
 
-import { AuthProvider, AuthContext } from "./contexts/AuthContext"
+import { Provider } from "./contexts/AuthContext"
 
 ReactDOM.render(
-	<AuthProvider>
-		<AuthContext.Consumer>
-			{({ isAuth, user }) => <App isAuth={isAuth} user={user} />}
-		</AuthContext.Consumer>
-	</AuthProvider>,
+	<Provider>
+		<App />
+	</Provider>,
 	document.getElementById("root")
 )

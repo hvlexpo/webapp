@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import firebase from "../../database/firebase"
-import { AuthConsumer } from "../../auth/AuthContext"
+import { Consumer } from "../../contexts/AuthContext"
 import "./Login.css"
 
 class Login extends Component {
@@ -82,7 +82,7 @@ class Login extends Component {
 
 		return (
 			<div className='Login'>
-				<AuthConsumer>
+				<Consumer>
 					{({ isAuth, login, logout }) => (
 						<div className='form__wrapper'>
 							{!codeInput ? (
@@ -119,7 +119,7 @@ class Login extends Component {
 							)}
 						</div>
 					)}
-				</AuthConsumer>
+				</Consumer>
 			</div>
 		)
 	}
