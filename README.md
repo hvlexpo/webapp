@@ -69,7 +69,7 @@ Information on how to download and install/run web and mobile clients.
 
 This software uses the following open source packages:
 
-- [Flutter](https://flutter.io)
+- [React](https://reactjs.org)
 - More packages
 
 ## License
