@@ -1,10 +1,9 @@
 import React, { Component } from "react"
-import firebase from "../database/firebase"
 
 const AuthContext = React.createContext()
 
 export class Provider extends Component {
-	state = { isAuth: true /* false */, user: null }
+	state = { isAuth: true /*false*/, user: null }
 
 	constructor() {
 		super()

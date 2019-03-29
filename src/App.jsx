@@ -39,7 +39,6 @@ const App = props => {
 						<React.Fragment>
 							<Navbar />
 							<Switch>
-								{/* Protected route is disabled while in development */}
 								{/* <ProtectedRoute path='/dashboard' component={Dashboard} /> */}
 								<Route exact path='/dashboard' component={Dashboard} />
 								<Route exact path='/' component={Login} />

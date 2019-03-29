@@ -8,10 +8,10 @@ const Dashboard = props => {
 		<main className='Dashboard'>
 			<section className='dashboard__header'>
 				<div className='dashboard__brand'>
-					<StatsCard />
-					<StatsCard />
-					<StatsCard />
-					<StatsCard />
+					<StatsCard title='Total votes' />
+					<StatsCard title='Leading expo' />
+					<StatsCard title='Leading category' />
+					<StatsCard title='Local time' />
 				</div>
 			</section>
 			<section className='dashboard__content'>

@@ -5,10 +5,11 @@
 	align-content: center;
 	align-items: center;
 	justify-content: center;
+	background: var(--whiteBlue);
+	height: calc(100vh - 8vh);
 }
 
 .form__wrapper {
-	margin-top: 240px;
 	height: 400px;
 	padding: 3em;
 	text-align: center;

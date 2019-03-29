@@ -4,7 +4,10 @@ import "./StatsCard.css"
 const StatsCard = props => {
 	return (
 		<div className='StatsCard'>
-			<div className='stats__content'>Loading statistics...</div>
+			<div className='stats__content'>
+				<h4 className='stats__title'>{props.title}</h4>
+				<div className='divider-50' />
+			</div>
 		</div>
 	)
 }

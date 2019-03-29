@@ -13,7 +13,10 @@
 
 .stats__content {
 	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+}
+
+.stats__title {
+	font-family: "Akademie-Bold", sans-serif;
+	font-size: 1.2rem;
+	margin: 10px 0;
 }

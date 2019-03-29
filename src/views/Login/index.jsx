@@ -1,18 +1,23 @@
 import React, { Component } from "react"
+import { Redirect } from "react-router-dom"
 import firebase from "../../database/firebase"
 import { Consumer } from "../../contexts/AuthContext"
 import "./Login.css"
 import logo from "../../assets/images/hvl_logo.png"
 
 class Login extends Component {
-	state = {
-		phoneNumber: "",
-		verificationCode: "",
-		codeInput: false,
-		confirmResult: null,
-		errors: [],
-		loading: false,
-		loggedInUser: null
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			phoneNumber: "",
+			verificationCode: "",
+			codeInput: false,
+			confirmResult: null,
+			errors: [],
+			loading: false,
+			loggedInUser: null
+		}
 	}
 
 	componentDidMount() {
@@ -68,6 +73,8 @@ class Login extends Component {
 			codeInput: false,
 			confirmResult: null
 		})
+		// this.props.children.login()
+		// return <Redirect to='/dashboard' />
 	}
 
 	isFormValid = ({ phoneNumber }) => phoneNumber
