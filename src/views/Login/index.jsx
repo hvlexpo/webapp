@@ -64,7 +64,10 @@ class Login extends Component {
 		event.preventDefault()
 		this.state.confirmResult
 			.confirm(this.state.verificationCode)
-			.then(user => this.setState({ loggedInUser: user }))
+			.then(user => {
+				console.log(user)
+				this.setState({ loggedInUser: user })
+			})
 			.catch(err => {
 				return ""
 			})

@@ -52,3 +52,36 @@
 	color: white;
 	background: var(--orange);
 }
+
+.new__form {
+	padding: 20px;
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	background: var(--mainBlue);
+	border-radius: 5px;
+}
+
+.new__form-title {
+	margin: 0;
+	margin-bottom: 20px;
+	font-family: "Akademie-Bold", sans-serif;
+	font-size: 1.5rem;
+	color: var(--lightBlue);
+}
+
+.new__form input {
+	display: block;
+	width: 300px;
+	padding: 9px;
+	font-family: "Akademie-Light", sans-serif;
+	color: white;
+	background: var(--lightBlue);
+	font-size: 1.2rem;
+	text-decoration: none;
+	border: none;
+	border-radius: 5px;
+}

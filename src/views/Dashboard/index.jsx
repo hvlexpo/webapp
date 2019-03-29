@@ -24,7 +24,7 @@ class Dashboard extends Component {
 	}
 
 	handleNewExpo = event => {
-		this.setState({ newExpo: true })
+		setTimeout(this.setState({ newExpo: true }), 1000)
 	}
 
 	render() {
@@ -49,8 +49,16 @@ class Dashboard extends Component {
 					</div>
 					<div className='divider-50' />
 					{newExpo ? (
-						<div>
-							<div>Hello new Form</div>
+						<div className='new__form'>
+							<h3 className='new__form-title'>Add new Expo</h3>
+							<form>
+								<input type='text' />
+								<span>Name</span>
+								<input type='text' />
+								<span>Name</span>
+								<input type='text' />
+								<span>Name</span>
+							</form>
 						</div>
 					) : null}
 				</section>
