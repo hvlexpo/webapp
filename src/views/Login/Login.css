@@ -10,7 +10,6 @@
 }
 
 .form__wrapper {
-	height: 400px;
 	padding: 3em;
 	text-align: center;
 	background: var(--mainBlue);
@@ -67,4 +66,8 @@
 	cursor: pointer;
 	color: white;
 	background: var(--orange);
+}
+
+.firebase {
+	width: 50px;
 }

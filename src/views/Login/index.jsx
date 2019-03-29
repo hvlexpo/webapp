@@ -4,6 +4,7 @@ import firebase from "../../database/firebase"
 import { Consumer } from "../../contexts/AuthContext"
 import "./Login.css"
 import logo from "../../assets/images/hvl_logo.png"
+import logo_firebase from "../../assets/images/firebase.png"
 
 class Login extends Component {
 	constructor(props) {
@@ -73,8 +74,6 @@ class Login extends Component {
 			codeInput: false,
 			confirmResult: null
 		})
-		// this.props.children.login()
-		// return <Redirect to='/dashboard' />
 	}
 
 	isFormValid = ({ phoneNumber }) => phoneNumber
@@ -91,7 +90,7 @@ class Login extends Component {
 		return (
 			<div className='Login'>
 				<Consumer>
-					{({ isAuth, login, logout }) => (
+					{({ login, isAuth }) => (
 						<div className='form__wrapper'>
 							<img className='form__image' src={logo} alt='HVL Logo' />
 							{!codeInput ? (
@@ -120,10 +119,21 @@ class Login extends Component {
 											value={verificationCode}
 										/>
 										<span className='form__label'>Recived code</span>
-										<button className='form__button'>Submit</button>
+										<button className='form__button' onClick={login}>
+											Submit
+										</button>
 									</form>
 								</div>
 							)}
+							{isAuth ? <Redirect to='/dashboard' /> : null}
+							<div>
+								<img className='firebase' src={logo_firebase} alt='Firebase' />
+							</div>
+							<div>
+								<span className='form__label'>
+									Authentication provided by Firebase
+								</span>
+							</div>
 						</div>
 					)}
 				</Consumer>

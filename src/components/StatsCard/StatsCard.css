@@ -2,21 +2,30 @@
 	font-family: "Akademie", sans-serif;
 	background: white;
 	color: #004357;
-	height: 200px;
+	min-height: 150px;
 	width: 300px;
-	border-radius: 10px;
+	border-radius: 5px;
 	padding: 20px;
 	display: inline-block;
-	margin: 20px;
+	margin: 0 20px;
 	box-shadow: 0 5px 10px black;
 }
 
 .stats__content {
-	height: 100%;
 }
 
 .stats__title {
 	font-family: "Akademie-Bold", sans-serif;
 	font-size: 1.2rem;
 	margin: 10px 0;
+}
+
+.clock {
+	margin: 50px 0;
+	text-align: center;
+}
+
+.clock p {
+	font-family: "Akademie-Medium", sans-serif;
+	font-size: 1.5rem;
 }

@@ -7,6 +7,9 @@ const StatsCard = props => {
 			<div className='stats__content'>
 				<h4 className='stats__title'>{props.title}</h4>
 				<div className='divider-50' />
+				<div className='clock'>
+					<p>{props.content}</p>
+				</div>
 			</div>
 		</div>
 	)

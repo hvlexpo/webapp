@@ -39,8 +39,8 @@ const App = props => {
 						<React.Fragment>
 							<Navbar />
 							<Switch>
-								{/* <ProtectedRoute path='/dashboard' component={Dashboard} /> */}
-								<Route exact path='/dashboard' component={Dashboard} />
+								<ProtectedRoute path='/dashboard' component={Dashboard} />
+								{/* <Route exact path='/dashboard' component={Dashboard} /> */}
 								<Route exact path='/' component={Login} />
 								<Route exact path='/about' component={About} />
 							</Switch>
