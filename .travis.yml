@@ -11,7 +11,7 @@ matrix:
         - name: Node 11
           node_js: "11"
 install: npm i
-script: npm test
+script: npm build
 cache:
     directories:
         - $HOME/node_modules
