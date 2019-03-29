@@ -23,6 +23,13 @@
 	src: url("./assets/fonts/Akademie-Std.otf");
 }
 
+:root {
+	--mainBlue: #004357;
+	--lightBlue: #4badbd;
+	--whiteBlue: #eff9fa;
+	--orange: #da532c;
+}
+
 html,
 body {
 	margin: 0;

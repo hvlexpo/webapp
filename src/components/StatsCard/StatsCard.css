@@ -3,10 +3,12 @@
 	background: white;
 	color: #004357;
 	height: 200px;
+	width: 300px;
 	border-radius: 10px;
 	padding: 20px;
 	display: inline-block;
 	margin: 20px;
+	box-shadow: 0 5px 10px black;
 }
 
 .stats__content {

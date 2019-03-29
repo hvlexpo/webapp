@@ -9,6 +9,9 @@ const Dashboard = props => {
 			<section className='dashboard__header'>
 				<div className='dashboard__brand'>
 					<StatsCard />
+					<StatsCard />
+					<StatsCard />
+					<StatsCard />
 				</div>
 			</section>
 			<section className='dashboard__content'>

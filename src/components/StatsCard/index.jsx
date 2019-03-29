@@ -4,7 +4,7 @@ import "./StatsCard.css"
 const StatsCard = props => {
 	return (
 		<div className='StatsCard'>
-			<div className='stats__content'>Hello Stats</div>
+			<div className='stats__content'>Loading statistics...</div>
 		</div>
 	)
 }

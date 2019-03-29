@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { Consumer } from "../../contexts/AuthContext"
+import firebase from "../../database/firebase"
 import "./Navbar.css"
 import logo from "../../assets/images/hvl-logo.png"
 
@@ -32,7 +33,21 @@ const Navbar = props => {
 									</li>
 								) : (
 									<li className='nav__item'>
-										<Link to='/' className='nav__link'>
+										<Link
+											onClick={() => {
+												firebase
+													.auth()
+													.signOut()
+													.then(function() {
+														// Set isAuth to false
+													})
+													.catch(function(error) {
+														console.error(error)
+													})
+											}}
+											to='/'
+											className='nav__link'
+										>
 											Logout
 										</Link>
 									</li>

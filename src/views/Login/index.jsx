@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import firebase from "../../database/firebase"
 import { Consumer } from "../../contexts/AuthContext"
 import "./Login.css"
+import logo from "../../assets/images/hvl_logo.png"
 
 class Login extends Component {
 	state = {
@@ -85,17 +86,17 @@ class Login extends Component {
 				<Consumer>
 					{({ isAuth, login, logout }) => (
 						<div className='form__wrapper'>
+							<img className='form__image' src={logo} alt='HVL Logo' />
 							{!codeInput ? (
 								<div>
 									<form className='form__login' onSubmit={this.handleSubmit}>
-										<span>Your phonenumber:</span>
 										<input
-											placeholder='Phonenumber'
 											className='form__input'
 											name='phoneNumber'
 											onChange={this.handleChange}
 											value={phoneNumber}
-										/>{" "}
+										/>
+										<span className='form__label'>Phone number</span>
 										<button className='form__button'>Login</button>
 									</form>
 								</div>
@@ -105,14 +106,13 @@ class Login extends Component {
 										className='form__login'
 										onSubmit={this.handleVerificationCode}
 									>
-										<span>Your recived code:</span>
 										<input
-											placeholder='Enter digits'
 											className='form__input'
 											name='verificationCode'
 											onChange={this.handleChange}
 											value={verificationCode}
 										/>
+										<span className='form__label'>Recived code</span>
 										<button className='form__button'>Submit</button>
 									</form>
 								</div>
