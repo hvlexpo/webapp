@@ -36,3 +36,14 @@
 	font-family: "Akademie-Light", sans-serif;
 	color: #004357;
 }
+
+.social__wrapper {
+	padding: 20px;
+	background: var(--whiteBlue);
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+}

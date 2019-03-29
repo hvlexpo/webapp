@@ -13,14 +13,42 @@
 	color: white;
 }
 
-.dashboard__title {
-	font-size: 3rem;
-	font-family: "Akademie-Bold", sans-serif;
-	color: #004357;
-}
-
 .dashboard__content {
 	background: white;
 	height: 50vh;
 	padding: 20px;
+}
+
+.dashboard__functions {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.dashboard__title {
+	font-size: 3rem;
+	font-family: "Akademie-Bold", sans-serif;
+	color: #004357;
+	margin-right: 100px;
+}
+
+.btn__add {
+	display: inline-block;
+	width: 120px;
+	margin: 0 10px;
+	padding: 9px;
+	text-decoration: none;
+	color: var(--lightBlue);
+	background: var(--mainBlue);
+	border: none;
+	border-radius: 5px;
+	font-family: "Akademie-Medium", sans-serif;
+	font-size: 0.6rem;
+	transition: all 0.2s ease-in-out;
+}
+
+.btn__add:hover {
+	cursor: pointer;
+	color: white;
+	background: var(--orange);
 }

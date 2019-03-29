@@ -20,7 +20,7 @@ const About = props => {
 					</div>
 				</div>
 			</section>
-			<section>
+			<section className='social__wrapper'>
 				<div>Hello</div>
 			</section>
 		</main>

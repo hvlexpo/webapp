@@ -5,7 +5,8 @@ import StatsCard from "../../components/StatsCard"
 
 class Dashboard extends Component {
 	state = {
-		time: new Date().toLocaleString()
+		time: new Date().toLocaleString(),
+		newExpo: false
 	}
 
 	componentDidMount() {
@@ -22,8 +23,12 @@ class Dashboard extends Component {
 		})
 	}
 
+	handleNewExpo = event => {
+		this.setState({ newExpo: true })
+	}
+
 	render() {
-		const { time } = this.state
+		const { time, newExpo } = this.state
 
 		return (
 			<main className='Dashboard'>
@@ -34,8 +39,20 @@ class Dashboard extends Component {
 					</div>
 				</section>
 				<section className='dashboard__content'>
-					<h1 className='dashboard__title'>Statistics</h1>
+					<div className='dashboard__functions'>
+						<h1 className='dashboard__title'>Dashboard</h1>
+						<button onClick={this.handleNewExpo} className='btn__add'>
+							Add new
+						</button>
+						<button className='btn__add'>Start Expo</button>
+						<button className='btn__add'>Stop Expo</button>
+					</div>
 					<div className='divider-50' />
+					{newExpo ? (
+						<div>
+							<div>Hello new Form</div>
+						</div>
+					) : null}
 				</section>
 			</main>
 		)
