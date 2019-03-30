@@ -26,7 +26,7 @@ const Navbar = props => {
 								) : null}
 								{!isAuth ? (
 									<li className='nav__item'>
-										<Link to='/login' className='nav__link'>
+										<Link to='/' className='nav__link'>
 											Login
 										</Link>
 									</li>
