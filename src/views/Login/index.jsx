@@ -88,9 +88,11 @@ class Login extends Component {
 
 	handleVerificationCode = event => {
 		event.preventDefault()
+		let tempUser = {}
 		this.state.confirmResult
 			.confirm(this.state.verificationCode)
 			.then(({ user }) => {
+				tempUser = user
 				this.setState({ loggedInUser: user })
 				this.context.login()
 			})
@@ -103,11 +105,14 @@ class Login extends Component {
 			.currentUser.getIdToken(true)
 			.then(idToken => {
 				this.props.tokenHandler(idToken)
-				this.props.fetchUser(idToken)
+				this.props.fetchUser(idToken, tempUser.uid)
 			})
 			.then(() => {
 				if (!this.props.user) {
-					this.props.postUser(this.props.token)
+					this.props.postUser(this.props.token, {
+						id: tempUser.uid,
+						name: tempUser.displayName
+					})
 				}
 			})
 
