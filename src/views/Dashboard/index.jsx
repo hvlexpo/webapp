@@ -1,7 +1,8 @@
-import React, { Component } from "react"
-import "./Dashboard.css"
-
-import StatsCard from "../../components/StatsCard"
+import React, { Component } from 'react'
+import './Dashboard.css'
+import { connect } from 'react-redux'
+import * as actions from '../../actions'
+import StatsCard from '../../components/StatsCard'
 
 class Dashboard extends Component {
 	state = {
@@ -11,6 +12,8 @@ class Dashboard extends Component {
 
 	componentDidMount() {
 		this.intervalID = setInterval(() => this.tick(), 1000)
+		this.props.fetchExhibitions(this.props.token)
+		this.props.fetchVotes(this.props.token)
 	}
 
 	componentWillUnmount() {
@@ -67,4 +70,11 @@ class Dashboard extends Component {
 	}
 }
 
-export default Dashboard
+const mapStateToProps = ({ exhibitions, votes, token }) => {
+	return { exhibitions, votes, token }
+}
+
+export default connect(
+	mapStateToProps,
+	actions
+)(Dashboard)

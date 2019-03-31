@@ -1,18 +1,21 @@
-import React, { Component } from "react"
-import { Redirect } from "react-router-dom"
-import firebase from "../../database/firebase"
-import { Consumer } from "../../contexts/AuthContext"
-import "./Login.css"
-import logo from "../../assets/images/hvl_logo.png"
-import logo_firebase from "../../assets/images/firebase.png"
+import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
+import firebase from '../../database/firebase'
+import { AuthContext, Consumer } from '../../contexts/AuthContext'
+import './Login.css'
+import logo from '../../assets/images/hvl_logo.png'
+import logo_firebase from '../../assets/images/firebase.png'
+import { connect } from 'react-redux'
+import { fetchUser, postUser, tokenHandler } from '../../actions'
 
 class Login extends Component {
+	static contextType = AuthContext
 	constructor(props) {
 		super(props)
 
 		this.state = {
-			phoneNumber: "",
-			verificationCode: "",
+			phoneNumber: '',
+			verificationCode: '',
 			codeInput: false,
 			confirmResult: null,
 			errors: [],
@@ -23,8 +26,8 @@ class Login extends Component {
 
 	componentDidMount() {
 		window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
-			"recaptcha-container",
-			{ size: "invisible" }
+			'recaptcha-container',
+			{ size: 'invisible' }
 		)
 	}
 
@@ -36,7 +39,7 @@ class Login extends Component {
 	}
 
 	handleSubmit = event => {
-		console.log("handleSubmit")
+		console.log('handleSubmit')
 		event.preventDefault()
 		if (this.isFormValid(this.state)) {
 			this.setState({ errors: [], loading: true })
@@ -56,7 +59,7 @@ class Login extends Component {
 					})
 				})
 
-			this.setState({ phoneNumber: "", codeInput: true })
+			this.setState({ phoneNumber: '', codeInput: true })
 		}
 	}
 
@@ -64,16 +67,29 @@ class Login extends Component {
 		event.preventDefault()
 		this.state.confirmResult
 			.confirm(this.state.verificationCode)
-			.then(user => {
-				console.log(user)
+			.then(({ user }) => {
 				this.setState({ loggedInUser: user })
+				this.context.login()
 			})
 			.catch(err => {
-				return ""
+				return ''
+			})
+
+		firebase
+			.auth()
+			.currentUser.getIdToken(true)
+			.then(idToken => {
+				this.props.tokenHandler(idToken)
+				this.props.fetchUser(idToken)
+			})
+			.then(() => {
+				if (!this.props.user) {
+					this.props.postUser(this.props.token)
+				}
 			})
 
 		this.setState({
-			verificationCode: "",
+			verificationCode: '',
 			codeInput: false,
 			confirmResult: null
 		})
@@ -83,8 +99,8 @@ class Login extends Component {
 
 	handleInputError = (errors, inputName) => {
 		return errors.some(error => error.message.toLowerCase().includes(inputName))
-			? "error"
-			: ""
+			? 'error'
+			: ''
 	}
 
 	render() {
@@ -93,7 +109,7 @@ class Login extends Component {
 		return (
 			<div className='Login'>
 				<Consumer>
-					{({ login, isAuth }) => (
+					{({ isAuth }) => (
 						<div className='form__wrapper'>
 							<img className='form__image' src={logo} alt='HVL Logo' />
 							{!codeInput ? (
@@ -122,9 +138,7 @@ class Login extends Component {
 											value={verificationCode}
 										/>
 										<span className='form__label'>Recived code</span>
-										<button className='form__button' onClick={login}>
-											Submit
-										</button>
+										<button className='form__button'>Submit</button>
 									</form>
 								</div>
 							)}
@@ -145,4 +159,15 @@ class Login extends Component {
 	}
 }
 
-export default Login
+const mapStateToProps = ({ user, token }) => {
+	return { user, token }
+}
+
+export default connect(
+	mapStateToProps,
+	{
+		fetchUser,
+		postUser,
+		tokenHandler
+	}
+)(Login)

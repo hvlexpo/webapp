@@ -1,7 +1,7 @@
-import React, { Component } from "react"
-import firebase from "../database/firebase"
+import React, { Component } from 'react'
+import firebase from '../database/firebase'
 
-const AuthContext = React.createContext()
+export const AuthContext = React.createContext()
 
 export class Provider extends Component {
 	state = { isAuth: false, user: null }
@@ -13,7 +13,7 @@ export class Provider extends Component {
 	}
 
 	login() {
-		setTimeout(() => this.setState({ isAuth: true }), 1000)
+		this.setState({ isAuth: true })
 	}
 
 	logout() {
