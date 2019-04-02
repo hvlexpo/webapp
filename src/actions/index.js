@@ -5,9 +5,12 @@ export const fetchUser = token => async dispatch => {
 	const res = await axios.get('/users/user', {
 		headers: { firebasetoken: token }
 	})
-	dispatch({
-		type: FETCH_USER,
-		payload: res.data
+	return new Promise((resolve, reject) => {
+		dispatch({
+			type: FETCH_USER,
+			payload: res.data
+		})
+		resolve(res.data)
 	})
 }
 
@@ -41,10 +44,14 @@ export const postExhibitions = (token, exhibition) => async dispatch => {
 	})
 }
 
-export const postUser = (token, user) => async dispatch => {
-	const res = await axios.post('/users/', user, {
-		headers: { firebasetoken: token }
-	})
+export const postUser = token => async dispatch => {
+	const res = await axios.post(
+		'/users/',
+		{},
+		{
+			headers: { firebasetoken: token }
+		}
+	)
 	dispatch({
 		type: FETCH_USER,
 		payload: res.data

@@ -4,7 +4,7 @@ import firebase from '../database/firebase'
 export const AuthContext = React.createContext()
 
 export class Provider extends Component {
-	state = { isAuth: false, user: null }
+	state = { isAuth: false }
 
 	constructor() {
 		super()
