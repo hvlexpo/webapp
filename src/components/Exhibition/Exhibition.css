@@ -1,0 +1,20 @@
+.Exhibiton {
+	background: var(--lightBlue);
+	padding: 20px;
+	text-align: center;
+}
+
+.exhibition__title {
+	color: var(--orange);
+	font-size: 2rem;
+	margin: 0;
+}
+
+.exhibition__description {
+}
+
+.exhibition__image {
+}
+
+.exhibition__votes {
+}

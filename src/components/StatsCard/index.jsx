@@ -1,7 +1,7 @@
 import React from "react"
 import "./StatsCard.css"
 
-const StatsCard = props => {
+const StatsCard = (props) => {
 	return (
 		<div className='StatsCard'>
 			<div className='stats__content'>

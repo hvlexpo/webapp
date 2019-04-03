@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
-import './Dashboard.css'
-import { connect } from 'react-redux'
-import * as actions from '../../actions'
-import Stats from './Stats'
+import React, { Component } from "react"
+import "./Dashboard.css"
+import { connect } from "react-redux"
+import * as actions from "../../actions"
+import Stats from "./Stats"
+import Exhibiton from "../../components/Exhibition"
 
 class Dashboard extends Component {
 	state = { newExpo: false }
@@ -16,28 +17,29 @@ class Dashboard extends Component {
 		clearInterval(this.intervalID)
 	}
 
-	handleNewExpo = event => {
+	handleNewExpo = (event) => {
 		setTimeout(this.setState({ newExpo: true }), 1000)
 	}
 
 	renderExhibitions() {
-		return this.props.exhibitions.map(exhibition => {
+		return this.props.exhibitions.map((exhibition) => {
 			return (
-				<div key={exhibition.id}>
-					<h3>{exhibition.name}</h3>
-					<p>{exhibition.desc}</p>
-					<img src={exhibition.photo} alt='Exhibition' />
-					<h1>Total votes: {this.countVotes(exhibition)}</h1>
-				</div>
+				<Exhibiton
+					key={exhibition.id}
+					name={exhibition.name}
+					description={exhibition.desc}
+					image={exhibition.photo}
+					totalVotes={this.countVotes(exhibition)}
+				/>
 			)
 		})
 	}
 
 	countVotes(exhibition) {
 		const filter = this.props.votes.filter(
-			vote => parseInt(vote.exhibition_id) === parseInt(exhibition.id)
+			(vote) => parseInt(vote.exhibition_id) === parseInt(exhibition.id)
 		)
-		const sum = filter.map(vote => vote.weight)
+		const sum = filter.map((vote) => vote.weight)
 		return sum.reduce((acc, total) => {
 			return acc + total
 		}, 0)
