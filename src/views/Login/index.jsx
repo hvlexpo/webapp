@@ -51,6 +51,11 @@ class Login extends Component {
 			'recaptcha-container',
 			{ size: 'invisible' }
 		)
+		firebase.auth().onAuthStateChanged(user => {
+			if (user) {
+				this.getToken()
+			}
+		})
 	}
 
 	displayErrors = errors =>
@@ -64,6 +69,8 @@ class Login extends Component {
 		event.preventDefault()
 		if (this.isFormValid(this.state)) {
 			this.setState({ errors: [], loading: true })
+
+			firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
 
 			firebase
 				.auth()
@@ -87,13 +94,19 @@ class Login extends Component {
 		event.preventDefault()
 		this.state.confirmResult
 			.confirm(this.state.verificationCode)
-			.then(() => {
-				this.context.login()
-			})
+			.then(() => this.getToken())
 			.catch(err => {
 				return ''
 			})
 
+		this.setState({
+			verificationCode: '',
+			codeInput: false,
+			confirmResult: null
+		})
+	}
+
+	getToken() {
 		firebase
 			.auth()
 			.currentUser.getIdToken(true)
@@ -103,13 +116,9 @@ class Login extends Component {
 					if (!user) {
 						this.props.postUser(idToken)
 					}
+					this.context.login()
 				})
 			})
-		this.setState({
-			verificationCode: '',
-			codeInput: false,
-			confirmResult: null
-		})
 	}
 
 	isFormValid = ({ phoneNumber }) => phoneNumber

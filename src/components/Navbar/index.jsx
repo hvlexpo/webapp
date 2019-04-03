@@ -1,8 +1,8 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import { Consumer } from "../../contexts/AuthContext"
-import "./Navbar.css"
-import logo from "../../assets/images/hvl-logo.png"
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { Consumer } from '../../contexts/AuthContext'
+import './Navbar.css'
+import logo from '../../assets/images/hvl-logo.png'
 
 const Navbar = props => {
 	return (
@@ -12,7 +12,7 @@ const Navbar = props => {
 					<header className='header'>
 						<div>
 							<Link to='/dashboard' className='header__link'>
-								<img src={logo} style={{ height: "45px" }} alt='HVL Logo' />
+								<img src={logo} style={{ height: '45px' }} alt='HVL Logo' />
 							</Link>
 						</div>
 						<nav className='nav'>
@@ -24,23 +24,23 @@ const Navbar = props => {
 										</Link>
 									</li>
 								) : null}
-								{!isAuth ? (
-									<li className='nav__item'>
-										<Link to='/' className='nav__link'>
-											Login
-										</Link>
-									</li>
-								) : (
-									<li className='nav__item'>
-										<Link onClick={logout} to='/' className='nav__link'>
-											Logout
-										</Link>
-									</li>
-								)}
 								<li className='nav__item'>
 									<Link to='/about' className='nav__link'>
 										About
 									</Link>
+									{!isAuth ? (
+										<li className='nav__item'>
+											<Link to='/' className='nav__link'>
+												Login
+											</Link>
+										</li>
+									) : (
+										<li className='nav__item'>
+											<Link onClick={logout} to='/' className='nav__link'>
+												Logout
+											</Link>
+										</li>
+									)}
 								</li>
 							</ul>
 						</nav>

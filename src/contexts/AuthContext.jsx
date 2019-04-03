@@ -1,7 +1,5 @@
-import React, { Component } from "react"
-import firebase from "../database/firebase"
-import { connect } from "react-redux"
-import { fetchUser } from "../actions/index"
+import React, { Component } from 'react'
+import firebase from '../database/firebase'
 
 export const AuthContext = React.createContext()
 
