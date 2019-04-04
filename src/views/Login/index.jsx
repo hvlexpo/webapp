@@ -154,7 +154,7 @@ class Login extends Component {
 												onChange={this.handleChange}
 												value={verificationCode}
 											/>
-											<span className='form__label'>Recived code</span>
+											<span className='form__label'>Received code</span>
 											<button className='form__button'>Submit</button>
 										</form>
 									</div>
