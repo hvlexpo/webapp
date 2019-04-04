@@ -1,13 +1,38 @@
-import React from "react"
-import "./Exhibition.css"
+import React from 'react'
+import './Exhibition.css'
+import { Slide } from 'react-slideshow-image'
 
-const Exhibiton = (props) => (
-	<div className='Exhibiton' key={props.key}>
-		<h2 className='exhibition__title'>{props.name}</h2>
-		<p className='exhibition__description'>{props.exhibition}</p>
-		<img className='exhibition__image' src={props.image} alt='Exhibition' />
-		<span className='exhibition__votes'>Total votes: {props.totalVotes}</span>
+const properties = {
+	duration: 5000,
+	transitionDuration: 500,
+	infinite: true,
+	arrows: true
+}
+
+const Exhibition = props => (
+	<div className='card' key={props.id}>
+		<div className='image'>{Slideshow(props.photos)}</div>
+		<div className='content'>
+			<h4 style={{ textAlign: 'center' }}>
+				{props.name}, nr {props.id}
+			</h4>
+			<div className='description'>
+				<h2 style={{ textAlign: 'center' }}>Total votes: {props.totalVotes}</h2>
+			</div>
+		</div>
 	</div>
 )
 
-export default Exhibiton
+const Slideshow = photos => {
+	return (
+		<Slide {...properties}>
+			{photos.map((each, index) => (
+				<div className='each-slide' key={index}>
+					<div style={{ backgroundImage: `url(${each})` }} />
+				</div>
+			))}
+		</Slide>
+	)
+}
+
+export default Exhibition

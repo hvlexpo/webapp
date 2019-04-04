@@ -1,21 +1,21 @@
-import React from "react"
+import React from 'react'
 import {
 	BrowserRouter as Router,
 	Switch,
 	Route,
 	Redirect
-} from "react-router-dom"
+} from 'react-router-dom'
 
 // Components
-import Navbar from "./components/Navbar"
+import Navbar from './components/Navbar'
 
 // Views
-import Login from "./views/Login"
-import Dashboard from "./views/Dashboard"
-import About from "./views/About"
+import Login from './views/Login'
+import Dashboard from './views/Dashboard'
+import About from './views/About'
 
 // Contexts
-import { Consumer } from "./contexts/AuthContext"
+import { Consumer } from './contexts/AuthContext'
 
 const ProtectedRoute = ({ component: Component, ...rest }) => (
 	<Consumer>
@@ -43,6 +43,7 @@ const App = props => {
 								{/* <Route exact path='/dashboard' component={Dashboard} /> */}
 								<Route exact path='/' component={Login} />
 								<Route exact path='/about' component={About} />
+								<Route exact path='/dashboard/:id' component={About} />
 							</Switch>
 						</React.Fragment>
 					</Router>

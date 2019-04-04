@@ -1,4 +1,6 @@
 export const FETCH_USER = 'FETCH_USER'
 export const FETCH_EXHIBITIONS = 'FETCH_EXHIBITIONS'
+export const POST_EXHIBITIONS = 'POST_EXHIBITIONS'
 export const FETCH_VOTES = 'FETCH_VOTES'
+export const POST_VOTES = 'POST_VOTES'
 export const TOKEN = 'TOKEN'

@@ -24,17 +24,15 @@
 	justify-content: flex-start;
 	align-items: center;
 }
-
 .dashboard__title {
 	font-size: 3rem;
-	font-family: "Akademie-Bold", sans-serif;
+	font-family: 'Akademie-Bold', sans-serif;
 	color: #004357;
-	margin-right: 100px;
+	margin-right: 400px;
 }
 
 .btn__add {
-	display: inline-block;
-	width: 120px;
+	width: 200px;
 	margin: 0 10px;
 	padding: 9px;
 	text-decoration: none;
@@ -42,8 +40,8 @@
 	background: var(--mainBlue);
 	border: none;
 	border-radius: 5px;
-	font-family: "Akademie-Medium", sans-serif;
-	font-size: 0.6rem;
+	font-family: 'Akademie-Medium', sans-serif;
+	font-size: 1rem;
 	transition: all 0.2s ease-in-out;
 }
 
@@ -55,7 +53,8 @@
 
 .new__form {
 	padding: 20px;
-	width: 50%;
+	width: 100%;
+	height: 350px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -63,25 +62,34 @@
 	align-content: center;
 	background: var(--mainBlue);
 	border-radius: 5px;
+	margin-bottom: 10px;
 }
 
 .new__form-title {
 	margin: 0;
 	margin-bottom: 20px;
-	font-family: "Akademie-Bold", sans-serif;
+	font-family: 'Akademie-Bold', sans-serif;
 	font-size: 1.5rem;
 	color: var(--lightBlue);
 }
 
 .new__form input {
 	display: block;
-	width: 300px;
+	width: 600px;
 	padding: 9px;
-	font-family: "Akademie-Light", sans-serif;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-family: 'Akademie-Light', sans-serif;
 	color: white;
 	background: var(--lightBlue);
 	font-size: 1.2rem;
 	text-decoration: none;
 	border: none;
 	border-radius: 5px;
+}
+
+.new__form span {
+	font-family: 'Akademie-Light', sans-serif;
+	color: white;
+	font-size: 1.2rem;
 }
