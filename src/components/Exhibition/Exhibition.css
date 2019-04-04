@@ -1,20 +1,31 @@
 .Exhibiton {
-	background: var(--lightBlue);
+	width: 600px;
+	height: 500px;
+	background: var(--whiteBlue);
 	padding: 20px;
 	text-align: center;
+	border-radius: 5px;
+	box-shadow: 0 10px 20px black;
+	margin: 20px;
 }
 
 .exhibition__title {
 	color: var(--orange);
-	font-size: 2rem;
+	font-size: 2.5rem;
 	margin: 0;
+	font-family: "Akademie-Bold", sans-serif;
 }
 
 .exhibition__description {
+	font-size: 1.2rem;
+	color: var(--mainBlue);
+	font-family: "Akademie-Light", sans-serif;
 }
 
 .exhibition__image {
 }
 
 .exhibition__votes {
+	font-size: 1rem;
+	font-family: "Akademie-Bold", sans-serif;
 }

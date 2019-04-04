@@ -76,8 +76,8 @@ class Dashboard extends Component {
 							</form>
 						</div>
 					) : null}
+					<div className='Exhibitions'>{this.renderExhibitions()}</div>
 				</section>
-				<section>{this.renderExhibitions()}</section>
 			</main>
 		)
 	}
