@@ -10,6 +10,7 @@ import logo from '../../assets/images/hvl_logo.png'
 import logo_firebase from '../../assets/images/firebase.png'
 import { connect } from 'react-redux'
 import { fetchUser, postUser, tokenHandler } from '../../actions'
+import Spinner from '../../components/Spinner'
 
 class Login extends Component {
 	static contextType = AuthContext
@@ -42,7 +43,8 @@ class Login extends Component {
 			codeInput: false,
 			confirmResult: null,
 			errors: [],
-			loading: false
+			loading: false,
+			decidingIfLoggedIn: true
 		}
 	}
 
@@ -54,6 +56,8 @@ class Login extends Component {
 		firebase.auth().onAuthStateChanged(user => {
 			if (user) {
 				this.getToken()
+			} else {
+				this.setState({ decidingIfLoggedIn: false })
 			}
 		})
 	}
@@ -117,6 +121,7 @@ class Login extends Component {
 						this.props.postUser(idToken)
 					}
 					this.context.login()
+					this.setState({ decidingIfLoggedIn: false })
 				})
 			})
 	}
@@ -130,58 +135,71 @@ class Login extends Component {
 	}
 
 	render() {
-		const { phoneNumber, codeInput, verificationCode } = this.state
+		const {
+			phoneNumber,
+			codeInput,
+			verificationCode,
+			decidingIfLoggedIn
+		} = this.state
 
-		return (
-			<div className='Login'>
-				<Consumer>
-					{({ isAuth }) => (
-						<div className='form__wrapper'>
-							<img className='form__image' src={logo} alt='HVL Logo' />
-							{!codeInput ? (
+		if (decidingIfLoggedIn) {
+			return <Spinner />
+		} else {
+			return (
+				<div className='Login'>
+					<Consumer>
+						{({ isAuth }) => (
+							<div className='form__wrapper'>
+								<img className='form__image' src={logo} alt='HVL Logo' />
+								{!codeInput ? (
+									<div>
+										<form className='form__login' onSubmit={this.handleSubmit}>
+											<input
+												className='form__input'
+												name='phoneNumber'
+												onChange={this.handleChange}
+												value={phoneNumber}
+											/>
+											<span className='form__label'>Phone number</span>
+											<button className='form__button'>Login</button>
+										</form>
+									</div>
+								) : (
+									<div>
+										<form
+											className='form__login'
+											onSubmit={this.handleVerificationCode}
+										>
+											<input
+												className='form__input'
+												name='verificationCode'
+												onChange={this.handleChange}
+												value={verificationCode}
+											/>
+											<span className='form__label'>Recived code</span>
+											<button className='form__button'>Submit</button>
+										</form>
+									</div>
+								)}
+								{isAuth ? <Redirect to='/dashboard' /> : null}
 								<div>
-									<form className='form__login' onSubmit={this.handleSubmit}>
-										<input
-											className='form__input'
-											name='phoneNumber'
-											onChange={this.handleChange}
-											value={phoneNumber}
-										/>
-										<span className='form__label'>Phone number</span>
-										<button className='form__button'>Login</button>
-									</form>
+									<img
+										className='firebase'
+										src={logo_firebase}
+										alt='Firebase'
+									/>
 								</div>
-							) : (
 								<div>
-									<form
-										className='form__login'
-										onSubmit={this.handleVerificationCode}
-									>
-										<input
-											className='form__input'
-											name='verificationCode'
-											onChange={this.handleChange}
-											value={verificationCode}
-										/>
-										<span className='form__label'>Recived code</span>
-										<button className='form__button'>Submit</button>
-									</form>
+									<span className='form__label'>
+										Authentication provided by Firebase
+									</span>
 								</div>
-							)}
-							{isAuth ? <Redirect to='/dashboard' /> : null}
-							<div>
-								<img className='firebase' src={logo_firebase} alt='Firebase' />
 							</div>
-							<div>
-								<span className='form__label'>
-									Authentication provided by Firebase
-								</span>
-							</div>
-						</div>
-					)}
-				</Consumer>
-			</div>
-		)
+						)}
+					</Consumer>
+				</div>
+			)
+		}
 	}
 }
 
