@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import firebase from '../database/firebase'
+import React, { Component } from "react"
+import firebase from "../database/firebase"
 
 export const AuthContext = React.createContext()
 
@@ -39,10 +39,6 @@ export class Provider extends Component {
 			</AuthContext.Provider>
 		)
 	}
-}
-
-const mapStateToProps = ({ exhibitions, votes, token }) => {
-	return { exhibitions, votes, token }
 }
 
 export const Consumer = AuthContext.Consumer

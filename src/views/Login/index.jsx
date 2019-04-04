@@ -1,44 +1,22 @@
-import React, { Component, useState, useEffect } from 'react'
+import React, { Component } from "react"
 
-import useHTTP from '../../hooks/http'
-
-import { Redirect } from 'react-router-dom'
-import firebase from '../../database/firebase'
-import { AuthContext, Consumer } from '../../contexts/AuthContext'
-import './Login.css'
-import logo from '../../assets/images/hvl_logo.png'
-import logo_firebase from '../../assets/images/firebase.png'
-import { connect } from 'react-redux'
-import { fetchUser, postUser, tokenHandler } from '../../actions'
+import { Redirect } from "react-router-dom"
+import firebase from "../../database/firebase"
+import { AuthContext, Consumer } from "../../contexts/AuthContext"
+import "./Login.css"
+import logo from "../../assets/images/hvl_logo.png"
+import logo_firebase from "../../assets/images/firebase.png"
+import { connect } from "react-redux"
+import { fetchUser, postUser, tokenHandler } from "../../actions"
 
 class Login extends Component {
 	static contextType = AuthContext
 	constructor(props) {
 		super(props)
 
-		/*
-		// Inputs
-		const [phoneNumber, changePhoneNumber] = useState("")
-		const [verificationCode, changeVerificationCode] = useState("")
-
-
-		useEffect(() => {
-			console.log("HELLO")
-		}, phoneNumber)
-
-		// Component did mount
-		useEffect(() => {
-			window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
-				"recaptcha-container",
-				{ size: "invisible" }
-			)
-			console.log("did mount")
-		}, {})
-		*/
-
 		this.state = {
-			phoneNumber: '',
-			verificationCode: '',
+			phoneNumber: "",
+			verificationCode: "",
 			codeInput: false,
 			confirmResult: null,
 			errors: [],
@@ -48,24 +26,24 @@ class Login extends Component {
 
 	componentDidMount() {
 		window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
-			'recaptcha-container',
-			{ size: 'invisible' }
+			"recaptcha-container",
+			{ size: "invisible" }
 		)
-		firebase.auth().onAuthStateChanged(user => {
+		firebase.auth().onAuthStateChanged((user) => {
 			if (user) {
 				this.getToken()
 			}
 		})
 	}
 
-	displayErrors = errors =>
+	displayErrors = (errors) =>
 		errors.map((error, i) => <p key={i}>{error.message}</p>)
 
-	handleChange = event => {
+	handleChange = (event) => {
 		this.setState({ [event.target.name]: event.target.value })
 	}
 
-	handleSubmit = event => {
+	handleSubmit = (event) => {
 		event.preventDefault()
 		if (this.isFormValid(this.state)) {
 			this.setState({ errors: [], loading: true })
@@ -75,10 +53,10 @@ class Login extends Component {
 			firebase
 				.auth()
 				.signInWithPhoneNumber(this.state.phoneNumber, window.recaptchaVerifier)
-				.then(confirmResult => {
+				.then((confirmResult) => {
 					this.setState({ confirmResult })
 				})
-				.catch(err => {
+				.catch((err) => {
 					console.error(err)
 					this.setState({
 						errors: this.state.errors.concat(err),
@@ -86,21 +64,21 @@ class Login extends Component {
 					})
 				})
 
-			this.setState({ phoneNumber: '', codeInput: true })
+			this.setState({ phoneNumber: "", codeInput: true })
 		}
 	}
 
-	handleVerificationCode = event => {
+	handleVerificationCode = (event) => {
 		event.preventDefault()
 		this.state.confirmResult
 			.confirm(this.state.verificationCode)
 			.then(() => this.getToken())
-			.catch(err => {
-				return ''
+			.catch((err) => {
+				return ""
 			})
 
 		this.setState({
-			verificationCode: '',
+			verificationCode: "",
 			codeInput: false,
 			confirmResult: null
 		})
@@ -110,9 +88,9 @@ class Login extends Component {
 		firebase
 			.auth()
 			.currentUser.getIdToken(true)
-			.then(idToken => {
+			.then((idToken) => {
 				this.props.tokenHandler(idToken)
-				this.props.fetchUser(idToken).then(user => {
+				this.props.fetchUser(idToken).then((user) => {
 					if (!user) {
 						this.props.postUser(idToken)
 					}
@@ -124,9 +102,11 @@ class Login extends Component {
 	isFormValid = ({ phoneNumber }) => phoneNumber
 
 	handleInputError = (errors, inputName) => {
-		return errors.some(error => error.message.toLowerCase().includes(inputName))
-			? 'error'
-			: ''
+		return errors.some((error) =>
+			error.message.toLowerCase().includes(inputName)
+		)
+			? "error"
+			: ""
 	}
 
 	render() {
