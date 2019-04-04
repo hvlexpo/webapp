@@ -1,6 +1,4 @@
-import React, { Component, useState, useEffect } from 'react'
-
-import useHTTP from '../../hooks/http'
+import React, { Component } from 'react'
 
 import { Redirect } from 'react-router-dom'
 import firebase from '../../database/firebase'
@@ -16,26 +14,6 @@ class Login extends Component {
 	static contextType = AuthContext
 	constructor(props) {
 		super(props)
-
-		/*
-		// Inputs
-		const [phoneNumber, changePhoneNumber] = useState("")
-		const [verificationCode, changeVerificationCode] = useState("")
-
-
-		useEffect(() => {
-			console.log("HELLO")
-		}, phoneNumber)
-
-		// Component did mount
-		useEffect(() => {
-			window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
-				"recaptcha-container",
-				{ size: "invisible" }
-			)
-			console.log("did mount")
-		}, {})
-		*/
 
 		this.state = {
 			phoneNumber: '',

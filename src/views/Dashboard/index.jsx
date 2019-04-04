@@ -27,7 +27,7 @@ class Dashboard extends Component {
 				<Exhibiton
 					key={exhibition.id}
 					name={exhibition.name}
-					description={exhibition.desc}
+					description={exhibition.description}
 					image={exhibition.photo}
 					totalVotes={this.countVotes(exhibition)}
 				/>
