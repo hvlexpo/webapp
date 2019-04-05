@@ -8,9 +8,16 @@ import {
 	POST_VOTES
 } from './types'
 
+let host
+if (process.env.NODE_ENV === 'production') {
+	host = "https://api.expo.sondregjellestad.space"
+} else {
+	host = "http://localhost:8080/"
+}
+
 export const fetchUser = token => async dispatch => {
-	const res = await axios.get('/users/user', {
-		headers: { firebasetoken: token }
+	const res = await axios.get(`${host}/users`, {
+		headers: { FirebaseToken: token }
 	})
 	return new Promise((resolve, reject) => {
 		dispatch({
@@ -22,8 +29,8 @@ export const fetchUser = token => async dispatch => {
 }
 
 export const fetchExhibitions = token => async dispatch => {
-	const res = await axios.get('/exhibitions/all', {
-		headers: { firebasetoken: token }
+	const res = await axios.get(`${host}/exhibitions`, {
+		headers: { FirebaseToken: token }
 	})
 	dispatch({
 		type: FETCH_EXHIBITIONS,
@@ -32,8 +39,8 @@ export const fetchExhibitions = token => async dispatch => {
 }
 
 export const fetchVotes = token => async dispatch => {
-	const res = await axios.get('/votes/all', {
-		headers: { firebasetoken: token }
+	const res = await axios.get(`${host}/votes/all`, {
+		headers: { FirebaseToken: token }
 	})
 	dispatch({
 		type: FETCH_VOTES,
@@ -42,8 +49,8 @@ export const fetchVotes = token => async dispatch => {
 }
 
 export const postExhibitions = (token, exhibition) => async dispatch => {
-	const res = await axios.post('/exhibitions/', exhibition, {
-		headers: { firebasetoken: token }
+	const res = await axios.post(`${host}/exhibitions`, exhibition, {
+		headers: { FirebaseToken: token }
 	})
 	dispatch({
 		type: POST_EXHIBITIONS,
@@ -52,8 +59,8 @@ export const postExhibitions = (token, exhibition) => async dispatch => {
 }
 
 export const postVote = (token, vote) => async dispatch => {
-	const res = await axios.post('/votes/', vote, {
-		headers: { firebasetoken: token }
+	const res = await axios.post(`${host}/votes`, vote, {
+		headers: { FirebaseToken: token }
 	})
 	dispatch({
 		type: POST_VOTES,
@@ -63,10 +70,10 @@ export const postVote = (token, vote) => async dispatch => {
 
 export const postUser = token => async dispatch => {
 	const res = await axios.post(
-		'/users/',
+		`${host}/users`,
 		{},
 		{
-			headers: { firebasetoken: token }
+			headers: { FirebaseToken: token }
 		}
 	)
 	dispatch({
