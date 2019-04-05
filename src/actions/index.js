@@ -10,9 +10,9 @@ import {
 
 let host
 if (process.env.NODE_ENV === 'production') {
-	host = "https://api.expo.sondregjellestad.space"
+	host = 'https://api.expo.sondregjellestad.space'
 } else {
-	host = "http://localhost:8080/"
+	host = 'http://localhost:8080'
 }
 
 export const fetchUser = token => async dispatch => {
@@ -58,10 +58,17 @@ export const postExhibitions = (token, exhibition) => async dispatch => {
 	})
 }
 
-export const postVote = (token, vote) => async dispatch => {
-	const res = await axios.post(`${host}/votes`, vote, {
-		headers: { FirebaseToken: token }
-	})
+export const postVote = (
+	token,
+	{ exhibition_id, weight }
+) => async dispatch => {
+	const res = await axios.put(
+		`${host}/votes/${exhibition_id}`,
+		{ weight },
+		{
+			headers: { FirebaseToken: token }
+		}
+	)
 	dispatch({
 		type: POST_VOTES,
 		payload: res.data

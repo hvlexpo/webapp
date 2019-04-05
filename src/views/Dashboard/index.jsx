@@ -79,7 +79,7 @@ class Dashboard extends Component {
 			weight
 		})
 		this.handleNewVote()
-		this.setState({ name: '', photos: [] })
+		this.setState({ exhibition_id: '', weight: '' })
 	}
 
 	handleChange = event => {
